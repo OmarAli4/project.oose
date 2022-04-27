@@ -1,5 +1,26 @@
-<?php 
-include_once "header.php";
+<?php /*
+include_once "fun.php";
+include_once "order.php";
+session_start();
+$obj;
+$z;
+if($_SESSION["objid"]==1||$_SESSION["objid"]==3)
+{
+    $obj=new act();
+    $z=0;
+}
+if($_SESSION["objid"]==2)
+{
+    $obj=new orderdetils();
+    $z=2;
+}
+$arr=$obj->editeact($_GET["id"]);
+//$_SESSION["ir"]=$_GET["id"];
+$_SESSION["ir"]=$arr;
+for($i=$z;$i<count($arr);$i++)
+{
+    echo "<a href=edite3.php?is=".$i.">".$arr[$i]."</a>"."<br>";
+}*/
 ?>
 <!DOCTYPE html>
 <html>
@@ -8,22 +29,18 @@ include_once "header.php";
  ?>
 </head>
 <body>
-  <h1>Edit</h1>
+  <h1>Edite</h1>
+  <table border=1>
+    <tr> 
 <?php
-include_once "users.php";
+include_once "fun.php";
 include_once "order.php";
-include_once "userstype.php";
-include_once "orderdetils.php";
+session_start();
 $obj;
 $z;
 if($_SESSION["objid"]==1||$_SESSION["objid"]==3)
 {
-    $obj=new users();
-    $z=0;
-}
-if($_SESSION["objid"]==4)
-{
-    $obj=new usertype();
+    $obj=new act();
     $z=0;
 }
 if($_SESSION["objid"]==2)
@@ -31,40 +48,21 @@ if($_SESSION["objid"]==2)
     $obj=new orderdetils();
     $z=2;
 }
-$arr=$obj->edit($_REQUEST["id"]);
+$arr=$obj->editeact($_GET["id"]);
 //$_SESSION["ir"]=$_GET["id"];
 $_SESSION["ir"]=$arr;
 $gg=1;
-?>
-<table>
-      <thead>
-
-<?php
 for($i=$z;$i<count($arr);$i++)
 {
-?>
-    <?php echo "<th>Edit".($gg)."</th>";
+    echo "<td>Edite".($gg)."</td>";
     $gg++;
-    ?>
-<?php
 }
-?>
-    <thead>
-      <tbody>
-<tr>
-<?php 
+echo "<tr></tr>";
 for($i=$z;$i<count($arr);$i++)
 {
-?>
-    <?php echo "<td><a href=edite3.php?is=".$i.">".$arr[$i]."</a></td>";?>
-<?php
+    echo "<td><a href=edite3.php?is=".$i.">".$arr[$i]."</a></td>";
 }
 ?>
-</tr>
-</tbody>
-    <table/> 
+</table>
 </body>
 </html>
-<?php
-include_once "footer.php";
-?>

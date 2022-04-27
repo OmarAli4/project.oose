@@ -1,23 +1,15 @@
 <?php
 session_start();
-include_once "users.php";
+include_once "fun.php";
 include_once "order.php";
-include_once "userstype.php";
-
-include_once "orderdetils.php";
-
 $arr= $_SESSION["ir"];
 $as=$_REQUEST["colum"];
 $oldrecord="";
 $newrecord="";
 $actobj;
-if($_SESSION["objid"]==4)
-{
-    $actobj=new usertype();
-}
 if($_SESSION["objid"]==1||$_SESSION["objid"]==3)
 {
-    $actobj=new users();
+    $actobj=new act();
 }
 if($_SESSION["objid"]==2)
 {
@@ -35,8 +27,8 @@ for($i=0;$i<count($arr);$i++)
      }
      else
      {
-        $oldrecord=$oldrecord.$actobj->filemanagerobj->s.$arr[$i];
-        $newrecord=$newrecord.$actobj->filemanagerobj->s. $arr[$i];
+        $oldrecord=$oldrecord.$actobj->filemangerobj->separator.$arr[$i];
+        $newrecord=$newrecord.$actobj->filemangerobj->separator. $arr[$i];
      }
     }
     else
@@ -48,22 +40,18 @@ for($i=0;$i<count($arr);$i++)
         }
         else
         {
-        $oldrecord=$oldrecord.$actobj->filemanagerobj->s.$arr[$i];
-        $newrecord=$newrecord.$actobj->filemanagerobj->s. $as;
+        $oldrecord=$oldrecord.$actobj->filemangerobj->separator.$arr[$i];
+        $newrecord=$newrecord.$actobj->filemangerobj->separator. $as;
         }
     }
 }
-$actobj->filemanagerobj->editerecord2($oldrecord,$newrecord);
+$actobj->filemangerobj->editerecord2($oldrecord,$newrecord);
 if($_SESSION["objid"]==1)
 {
-    header("location:modifyusersview.php");
-}
-if($_SESSION["objid"]==4)
-{
-    header("location:modifyuserstypeview.php");
+    header("location:sobeih.php");
 }
 if($_SESSION["objid"]==2||$_SESSION["objid"]==3)
 {
-    header("location:orderview.php");
+    header("location:ordercontrol.php");
 }
 ?>

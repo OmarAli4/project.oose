@@ -1,6 +1,6 @@
 <?php
-include_once"users.php";
-$actobj=new users();
-$actobj->delete($_GET["id"]);
-header("location:orderview.php");
+include_once"fun.php";
+$actobj=new act();
+$actobj->deleteact($_GET["id"]);
+header("location:sobeih.php");
  ?>

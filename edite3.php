@@ -3,7 +3,7 @@
 <head>
 </head>
 <form action="edite.php" method="POST">
-  edit<br> <input type="text" name="colum">
+  edite<br> <input type="text" name="colum">
   <br>
   <input type="submit">
 </form>

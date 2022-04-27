@@ -47,8 +47,7 @@
         <input type="submit" name="submit" vlaue="Choose options">
     </form>
     <?php
-      include_once "order.php";
-      include_once "orderdetils.php";
+      include_once"order.php";
       if(isset($_POST['submit']))
       {
         if(!empty($_POST['specialty'])&&!empty($_POST['ordertype'])&&!empty($_POST['date'])&&!empty($_POST['time2'])) 
@@ -63,15 +62,15 @@
           $objorder->setpatientid($_GET["id"]);
           $objorder->setdoctorid($doctortype);
           $objorder->setordertype($ordert);
-          $objorder->add();
+          $objorder->stororder();
           $orderdetils=new orderdetils();
           $orderdetils->setorderid( $objorder->getid());
           $orderdetils->setpatientid($_GET["id"]);
           $orderdetils->setordertypename($ordert);
           $orderdetils->setdate($_REQUEST["date"]);
           $orderdetils->settime($_REQUEST["time2"]);
-          $orderdetils->add();
-          header("location:orderview.php");
+          $orderdetils->stororderdetils();
+          header("location:ordercontrol.php");
                 
         } else 
           {

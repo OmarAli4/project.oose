@@ -1,24 +1,15 @@
 <?php
 session_start();
-include_once "usertypemenu.php";
-$email=$_REQUEST["Email"];
+$username=$_REQUEST["email"];
 $password=$_REQUEST["password"];
-include_once "users.php";
-$obj=new users();
-$obju=new usertypemenu();
-$s=$obj->login($email,$password);
-$usert=$obju->retrunmenutypebyusertypeid($s->usertype->id);
-if($s!=null)
+if($username=="ahmed@sobeih"&&$password=="123")
 {
-    $_SESSION["Email"]=$email;
-    $name=$usert->getname();
-    //echo $name;
-     header("location:$name");
-
+    $_SESSION["username"]="ahme@sobeih";
+    echo "done";
 }
 else
 {
-   header("location:login.php");
+  echo "error";
 }
 
-?>
+ ?>
